@@ -109,7 +109,7 @@ function updateDropdown() {
 
   // Add the default "Select a city" option
   const defaultOption = document.createElement('option');
-  defaultOption.text = 'Select a city';
+  defaultOption.text = 'History';
   defaultOption.disabled = true;
   defaultOption.selected = true;
   dropdown.add(defaultOption);
