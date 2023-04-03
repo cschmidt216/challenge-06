@@ -34,11 +34,15 @@ function showWeather(currentWeatherData, forecastData) {
   const description = currentWeatherData.weather[0].description;
   const cityName = currentWeatherData.name;
   const countryName = currentWeatherData.sys.country;
+  const windSpeed = currentWeatherData.wind.speed;
+  const humidity = currentWeatherData.main.humidity;
 
   currentWeather.innerHTML = `
     <h2>${cityName}, ${countryName}</h2>
     <p>${description}</p>
-    <p>${temperature}°F</p>
+    <p>Temperature: ${temperature}°F</p>
+    <p>Wind Speed: ${windSpeed} mph</p>
+    <p>Humidity: ${humidity}%</p>
   `;
 
   // Show forecast
@@ -49,13 +53,17 @@ function showWeather(currentWeatherData, forecastData) {
     const dayName = new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'long' });
     const temperature = Math.round(day.main.temp);
     const iconURL = `https://openweathermap.org/img/w/${day.weather[0].icon}.png`;
+    const windSpeed = day.wind.speed;
+    const humidity = day.main.humidity;
 
     const forecastDay = document.createElement('div');
     forecastDay.classList.add('forecast-day');
     forecastDay.innerHTML = `
       <h2>${dayName}</h2>
       <img src="${iconURL}" alt="${day.weather[0].description}">
-      <p>${temperature}°F</p>
+      <p>Temperature: ${temperature}°F</p>
+      <p>Wind Speed: ${windSpeed} mph</p>
+      <p>Humidity: ${humidity}%</p>
     `;
 
     forecast.appendChild(forecastDay);
